@@ -54,6 +54,8 @@ message Request
   optional AppsRequest apps = 14;
   optional KeyEvent key = 15;
   optional Config config = 16;
+// yytang 08-12-2015
+  optional bool replayState = 17 [default = false];
 }
 
 // Server to client message wrapper
@@ -419,4 +421,10 @@ message KeyEvent {
 // C->S
 message Config {
   optional bool hardKeyboard = 1; // whether or not we have a hard keyboard attached
+}
+
+//REPLY: For collecting data
+message InputLog {
+  repeated Request request = 1;
+  repeated int64 delta = 2; 
 }
